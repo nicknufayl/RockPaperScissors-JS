@@ -5,6 +5,8 @@ const rockButton = document.querySelector('.rock')
 const paperButton = document.querySelector('.paper')
 const scissorsButton = document.querySelector('.scissors')
 const outcomeDiv = document.querySelector('.outcome')
+const playerScoreSpan = document.querySelector('.player-score')
+const compScoreSpan = document.querySelector('.comp-score')
 
 function computerPlay() {
     const arrOfChoices = ['rock', 'paper', 'scissors']
@@ -54,22 +56,49 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
+const checkWinner = (playerScore, compScore) => {
+    if (playerScore === 5) {
+        const h2 = document.createElement('h2')
+        h2.classList.add('player-won')
+        h2.innerText = `You WON! ${playerScore} to ${compScore}`
+        outcomeDiv.appendChild(h2)
+    }
+
+    if (compScore === 5) {
+        const h2 = document.createElement('h2')
+        h2.classList.add('comp-won')
+        h2.innerText = `You LOST! ${playerScore} to ${compScore}`
+        outcomeDiv.appendChild(h2)
+    }
+}
+
+const updateScores = (playerScore, compScore) => {
+    playerScoreSpan.innerText = `${playerScore}`
+    compScoreSpan.innerText = `${compScore}`
+}
+
 rockButton.addEventListener('click', () => {
     const computerSelection = computerPlay()
     const playerSelection = 'rock'
     playRound(playerSelection, computerSelection)
+    updateScores(playerScore, compScore)
+    checkWinner(playerScore, compScore)
 })
 
 paperButton.addEventListener('click', () => {
     const computerSelection = computerPlay()
     const playerSelection = 'paper'
     playRound(playerSelection, computerSelection)
+    updateScores(playerScore, compScore)
+    checkWinner(playerScore, compScore)
 })
 
 scissorsButton.addEventListener('click', () => {
     const computerSelection = computerPlay()
     const playerSelection = 'scissors'
     playRound(playerSelection, computerSelection)
+    updateScores(playerScore, compScore)
+    checkWinner(playerScore, compScore)
 })
 
 // function game() {
