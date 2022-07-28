@@ -35,11 +35,10 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function game() {
-    for (let i = 0; i < 5; i++) {
+   /* for (let i = 0; i < 5; i++) {
         const playerSelection = prompt('Rock, Paper or Scissors?', '').toLowerCase()
         const computerSelection = computerPlay()
-        console.log(playRound(playerSelection, computerSelection))
-    }
+    } */
 
     if (playerScore > compScore) {
         return 'VICTORY!'
@@ -50,4 +49,4 @@ function game() {
     }
 }
 
-console.log(game())
+game()
